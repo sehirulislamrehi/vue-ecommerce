@@ -101,8 +101,7 @@
                                                     <!-- cart detail -->
                                                     <div class="cart_detail">
                                                         <p class="text-center">Cart Total <span>1000 BDT</span> </p>
-                                                        <router-link to="" class="checkout">Checkout</router-link>
-                                                        <router-link to="" class="cart_view">Cart View</router-link>
+                                                        <router-link to="checkout" class="checkout">Checkout</router-link>
                                                     </div>
                                                     <!-- cart detail end-->
 

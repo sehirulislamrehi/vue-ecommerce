@@ -495,7 +495,7 @@
                                         </div>
 
                                         <div class="col-md-6 col-4" style="text-align: right;">
-                                             <router-link to="">View All</router-link >
+                                             <router-link to="category">View All</router-link >
                                         </div>
                                    </div>
                                    <!-- title row end -->
@@ -641,7 +641,7 @@
                                         </div>
 
                                         <div class="col-md-6 col-4" style="text-align: right;">
-                                             <router-link to="">View All</router-link >
+                                             <router-link to="category">View All</router-link >
                                         </div>
                                    </div>
                                    <!-- title row end -->
@@ -782,7 +782,7 @@
                                         </div>
 
                                         <div class="col-md-6 col-4" style="text-align: right;">
-                                             <router-link to="">View All</router-link >
+                                             <router-link to="category">View All</router-link >
                                         </div>
                                    </div>
                                    <!-- title row end -->

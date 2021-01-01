@@ -8,6 +8,7 @@ import ProductDetails from "./components/ProductDetailComponent"
 import Shop from "./components/ShopComponent"
 import Profile from "./components/ProfileComponent"
 import Checkout from "./components/CheckoutComponent"
+import Category from "./components/CategoryComponent"
 
 Vue.use(VueRouter)
 
@@ -46,6 +47,11 @@ const routes = [
           path: "/checkout",
           name: "checkout",
           component: Checkout
+     },
+     {
+          path: "/category",
+          name: "category",
+          component: Category
      }
 ]
 
