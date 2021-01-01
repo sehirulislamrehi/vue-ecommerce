@@ -12,7 +12,7 @@
                                     <i class="fas fa-phone"></i>
                                 </li>
                                 <li>
-                                    Support 24/7 : 01405-313233 , 01403-919293
+                                    Support 24/7 : 01858361812
                                 </li>
                             </ul>
                         </div>
@@ -27,7 +27,7 @@
                                     <i class="fas fa-envelope"></i>
                                 </li>
                                 <li>
-                                    info@onphonic.com
+                                    mdsehirulislamrehi@gmail.com
                                 </li>
                             </ul>
                         </div>
@@ -38,6 +38,11 @@
                     <div class="col-md-7 top-col-right">
                         <div class="top-useful-link">
                             <ul>
+                                <li>
+                                    <router-link to="shop">
+                                        Our Shop
+                                    </router-link>
+                                </li>
                                 <li>
                                     <router-link to="productdetails">
                                         Product Details

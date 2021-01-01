@@ -206,8 +206,7 @@
 
           <!-- developed by section start -->
           <section class="developed-by">
-               <p style="text-align: center;">Developed By <a href="http://www.ssttechbd.com" style="color:white">SST Tech
-                         Ltd.</a> </p>
+               <p style="text-align: center;">Developed By <a href="http://www.sehirulislamrehi.com" target="_blank" style="color:white">Sehirul Islam Rehi</a> </p>
           </section>
           <!-- developed by section end -->
 

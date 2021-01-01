@@ -55,11 +55,6 @@
                                 <div class="col-md-12" style="position: relative;">
                                     <div class="cart_block">
                                         <ul>
-                                            <li>
-                                                <a href="">
-                                                    <i class="far fa-heart"></i>
-                                                </a>
-                                            </li>
                                             <li class="cart_box" id="cart_box" @mouseover="cart_show" @mouseout="cart_hide">
                                                 <!-- cart count start -->
                                                 <div class="cart_count">

@@ -5,6 +5,7 @@ import Home from "./components/HomeComponent"
 import Login from "./components/LoginComponent"
 import Register from "./components/RegisterComponent"
 import ProductDetails from "./components/ProductDetailComponent"
+import Shop from "./components/ShopComponent"
 
 Vue.use(VueRouter)
 
@@ -25,15 +26,19 @@ const routes = [
           component: Register
      },
      {
-          path: "/product-details",
+          path: "/productdetails",
           name: "productdetails",
           component: ProductDetails
+     },
+     {
+          path: "/shop",
+          name: "shop",
+          component: Shop
      }
 ]
 
 const router = new VueRouter({
      mode: "history",
-      
      routes 
      })
 
