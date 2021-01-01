@@ -74,6 +74,9 @@ button:focus{
 .active-nav-pc{
   display: block!important;
 }
+.badge-success{
+  background: green;
+}
 /* global css end */
 
 
@@ -1121,6 +1124,42 @@ button:focus{
 
 
 
+
+
+
+
+
+
+
+
+
+/* profile section css start */
+.profile-section{
+  padding: 30px 0;
+}
+/* profile section css end */
+
+
+
+
+
+
+
+
+
+
+/* checkout section start */
+.checkout-section{
+  padding: 30px 0;
+}
+.checkout-section .order-summary{
+  background: white;
+  padding: 15px;
+}
+.checkout-section .order-summary p{
+  margin: 10px 0;
+}
+/* checkout section end */
 
 
 

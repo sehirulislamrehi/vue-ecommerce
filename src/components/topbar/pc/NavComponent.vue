@@ -8,37 +8,37 @@
                         <div class="nav-item-list">
                             <ul>
                                 <li>
-                                    <a href="">Electronics & Home Appliance</a>
+                                    <router-link to="">Electronics & Home Appliance</router-link>
                                 </li>
                                 <li>
-                                    <a href="">Women's Fashion</a>
+                                    <router-link to="">Women's Fashion</router-link>
                                 </li>
                                 <li>
-                                    <a href="">Gadget Items</a>
+                                    <router-link to="">Gadget Items</router-link>
                                 </li>
                                 <li>
-                                    <a href="">Consumer Promotions</a>
+                                    <router-link to="">Consumer Promotions</router-link>
                                 </li>
                                 <li>
-                                    <a href="">Cooking Products</a>
+                                    <router-link to="">Cooking Products</router-link>
                                 </li>
                                 <li>
-                                    <a href="">Food Products</a>
+                                    <router-link to="">Food Products</router-link>
                                 </li>
                                 <li>
-                                    <a href="">Organic Fruits & Vegetables</a>
+                                    <router-link to="">Organic Fruits & Vegetables</router-link>
                                 </li>
                                 <li>
-                                    <a href="">Health & Beauty</a>
+                                    <router-link to="">Health & Beauty</router-link>
                                 </li>
                                 <li>
-                                    <a href="">Home & Cleaning</a>
+                                    <router-link to="">Home & Cleaning</router-link>
                                 </li>
                                 <li>
-                                    <a href="">Office & Stationary</a>
+                                    <router-link to="">Office & Stationary</router-link>
                                 </li>
                                 <li>
-                                    <a href="">Medinice</a>
+                                    <router-link to="">Medinice</router-link>
                                 </li>
                             </ul>
                         </div>

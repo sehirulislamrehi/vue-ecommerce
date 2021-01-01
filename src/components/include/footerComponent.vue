@@ -48,29 +48,29 @@
                               <div class="right">
                                    <ul>
                                         <li>
-                                             <a href="">
+                                             <router-link to="">
                                                   <i class="fab fa-facebook-f"></i>
-                                             </a>
+                                             </router-link >
                                         </li>
                                         <li>
-                                             <a href="">
+                                             <router-link to="">
                                                   <i class="fab fa-google"></i>
-                                             </a>
+                                             </router-link >
                                         </li>
                                         <li>
-                                             <a href="">
+                                             <router-link to="">
                                                   <i class="fab fa-twitter"></i>
-                                             </a>
+                                             </router-link >
                                         </li>
                                         <li>
-                                             <a href="">
+                                             <router-link to="">
                                                   <i class="fab fa-vimeo-v"></i>
-                                             </a>
+                                             </router-link >
                                         </li>
                                         <li>
-                                             <a href="">
+                                             <router-link to="">
                                                   <i class="fas fa-rss"></i>
-                                             </a>
+                                             </router-link >
                                         </li>
                                    </ul>
                               </div>
@@ -109,10 +109,10 @@
                               <div class="widget-box">
                                    <h4>Help</h4>
                                    <ul>
-                                        <li><a href="">Help</a></li>
-                                        <li><a href="">Information</a></li>
-                                        <li><a href="">Privacy Plicy</a></li>
-                                        <li><a href="">Shipping Details</a></li>
+                                        <li><router-link to="">Help</router-link ></li>
+                                        <li><router-link to="">Information</router-link ></li>
+                                        <li><router-link to="">Privacy Plicy</router-link ></li>
+                                        <li><router-link to="">Shipping Details</router-link ></li>
                                    </ul>
                               </div>
                               </div>
@@ -123,11 +123,11 @@
                               <div class="widget-box">
                                    <h4>Support</h4>
                                    <ul>
-                                        <li><a href="">Contact Us</a></li>
-                                        <li><a href="">About Us</a></li>
-                                        <li><a href="">Career</a></li>
-                                        <li><a href="">Refund & Returns</a></li>
-                                        <li><a href="">Deliveries</a></li>
+                                        <li><router-link to="">Contact Us</router-link ></li>
+                                        <li><router-link to="">About Us</router-link ></li>
+                                        <li><router-link to="">Career</router-link ></li>
+                                        <li><router-link to="">Refund & Returns</router-link ></li>
+                                        <li><router-link to="">Deliveries</router-link ></li>
                                    </ul>
                               </div>
                               </div>
@@ -138,11 +138,11 @@
                               <div class="widget-box">
                                    <h4>Information</h4>
                                    <ul>
-                                        <li><a href="">Search Terms</a></li>
-                                        <li><a href="">Advance Search</a></li>
-                                        <li><a href="">Help & Faq's</a></li>
-                                        <li><a href="">Store Location</a></li>
-                                        <li><a href="">Order & Returns</a></li>
+                                        <li><router-link to="">Search Terms</router-link ></li>
+                                        <li><router-link to="">Advance Search</router-link ></li>
+                                        <li><router-link to="">Help & Faq's</router-link ></li>
+                                        <li><router-link to="">Store Location</router-link ></li>
+                                        <li><router-link to="">Order & Returns</router-link ></li>
                                    </ul>
                               </div>
                               </div>
@@ -206,7 +206,7 @@
 
           <!-- developed by section start -->
           <section class="developed-by">
-               <p style="text-align: center;">Developed By <a href="http://www.sehirulislamrehi.com" target="_blank" style="color:white">Sehirul Islam Rehi</a> </p>
+               <p style="text-align: center;">Developed By <a href="http://www.sehirulislamrehi.com" target="_blank" style="color:white">Sehirul Islam Rehi</a > </p>
           </section>
           <!-- developed by section end -->
 

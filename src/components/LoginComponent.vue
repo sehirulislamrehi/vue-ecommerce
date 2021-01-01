@@ -9,11 +9,11 @@
                                    <form action="" method="">
                                         <div class="form-group">
                                              <label>Email</label>
-                                             <input type="email" class="form-control" placeholder="Enter you email address" required>
+                                             <input type="email" class="form-control" placeholder="Enter your email address" required>
                                         </div>
                                         <div class="form-group">
                                              <label>Password</label>
-                                             <input type="password" class="form-control" placeholder="Enter you password" required>
+                                             <input type="password" class="form-control" placeholder="Enter your password" required>
                                         </div>
                                         <div class="form-group"> 
                                              <button type="button" class="auth-submit">Login</button>

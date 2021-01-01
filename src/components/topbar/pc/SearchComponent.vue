@@ -72,7 +72,7 @@
                                                                     <img src="images/product-1.jpg" width="50px" alt="">
                                                                 </td>
                                                                 <td>
-                                                                    <a href="#">Asparagus - 1 kg / Green</a>
+                                                                    <router-link to="#">Asparagus - 1 kg / Green</router-link>
                                                                     <p>1 x $229.00 USD</p>
                                                                 </td>
                                                                 <td>
@@ -86,7 +86,7 @@
                                                                     <img src="images/product-1.jpg" width="50px" alt="">
                                                                 </td>
                                                                 <td>
-                                                                    <a href="#">Asparagus - 1 kg / Green</a>
+                                                                    <router-link to="#">Asparagus - 1 kg / Green</router-link>
                                                                     <p>1 x $229.00 USD</p>
                                                                 </td>
                                                                 <td>
@@ -101,8 +101,8 @@
                                                     <!-- cart detail -->
                                                     <div class="cart_detail">
                                                         <p class="text-center">Cart Total <span>1000 BDT</span> </p>
-                                                        <a href="" class="checkout">Checkout</a>
-                                                        <a href="" class="cart_view">Cart View</a>
+                                                        <router-link to="" class="checkout">Checkout</router-link>
+                                                        <router-link to="" class="cart_view">Cart View</router-link>
                                                     </div>
                                                     <!-- cart detail end-->
 

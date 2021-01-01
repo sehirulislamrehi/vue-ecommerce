@@ -39,6 +39,16 @@
                         <div class="top-useful-link">
                             <ul>
                                 <li>
+                                    <router-link to="Checkout">
+                                        Checkout
+                                    </router-link>
+                                </li>
+                                <li>
+                                    <router-link to="profile">
+                                        Profile
+                                    </router-link>
+                                </li>
+                                <li>
                                     <router-link to="shop">
                                         Our Shop
                                     </router-link>

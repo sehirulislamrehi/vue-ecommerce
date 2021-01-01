@@ -13,7 +13,7 @@
                          <!-- product start -->
                          <div class="col-md-2 col-6">
                               <div class="product-box">
-                                   <a href="">
+                                   <router-link to="">
                                    <div class="image">
                                         <img src="images/product-6.jpg" class="img-fluid" alt="">
                                    </div>
@@ -21,7 +21,7 @@
                                    <!-- <p class="regular_price">100 BDT</p> -->
                                    <p class="offer_price">50 BDT</p>
                                    <button class="add_cart">Add To Cart</button>
-                                   </a>
+                                   </router-link >
                               </div>
                          </div>
                          <!-- product end -->
@@ -29,14 +29,14 @@
                          <!-- product start -->
                          <div class="col-md-2 col-6">
                               <div class="product-box">
-                                   <a href="">
+                                   <router-link to="">
                                    <div class="image">
                                         <img src="images/product-8.jpg" class="img-fluid" alt="">
                                    </div>
                                    <p class="name">KAKA 40L Travel Sports Men Backpack – Black</p>
                                    <p class="offer_price">3500 BDT</p>
                                    <button class="add_cart">Add To Cart</button>
-                                   </a>
+                                   </router-link >
                               </div>
                          </div>
                          <!-- product end -->
@@ -44,7 +44,7 @@
                          <!-- product start -->
                          <div class="col-md-2 col-6">
                               <div class="product-box">
-                                   <a href="">
+                                   <router-link to="">
                                    <div class="image">
                                         <img src="images/product-9.jpg" class="img-fluid" alt="">
                                    </div>
@@ -52,7 +52,7 @@
                                    </p>
                                    <p class="offer_price">400 BDT</p>
                                    <button class="add_cart">Add To Cart</button>
-                                   </a>
+                                   </router-link >
                               </div>
                          </div>
                          <!-- product end -->
@@ -60,14 +60,14 @@
                          <!-- product start -->
                          <div class="col-md-2 col-6">
                               <div class="product-box">
-                                   <a href="">
+                                   <router-link to="">
                                    <div class="image">
                                         <img src="images/product-10.jpg" class="img-fluid" alt="">
                                    </div>
                                    <p class="name">Multifunction Foldable Kitchen Strainer Bag</p>
                                    <p class="offer_price">100 BDT</p>
                                    <button class="add_cart">Add To Cart</button>
-                                   </a>
+                                   </router-link >
                               </div>
                          </div>
                          <!-- product end -->
@@ -75,14 +75,14 @@
                          <!-- product start -->
                          <div class="col-md-2 col-6">
                               <div class="product-box">
-                                   <a href="">
+                                   <router-link to="">
                                    <div class="image">
                                         <img src="images/product-7.jpg" class="img-fluid" alt="">
                                    </div>
                                    <p class="name">Three Layer Drain Soap Holder</p>
                                    <p class="offer_price">180 BDT</p>
                                    <button class="add_cart">Add To Cart</button>
-                                   </a>
+                                   </router-link >
                               </div>
                          </div>
                          <!-- product end -->
@@ -90,7 +90,7 @@
                          <!-- product start -->
                          <div class="col-md-2 col-6">
                               <div class="product-box">
-                                   <a href="">
+                                   <router-link to="">
                                    <div class="image">
                                         <img src="images/product-6.jpg" class="img-fluid" alt="">
                                    </div>
@@ -98,7 +98,7 @@
                                    <p class="regular_price">100 BDT</p>
                                    <p class="offer_price">50 BDT</p>
                                    <button class="add_cart">Add To Cart</button>
-                                   </a>
+                                   </router-link >
                               </div>
                          </div>
                          <!-- product end -->
@@ -106,14 +106,14 @@
                          <!-- product start -->
                          <div class="col-md-2 col-6">
                               <div class="product-box">
-                                   <a href="">
+                                   <router-link to="">
                                    <div class="image">
                                         <img src="images/product-8.jpg" class="img-fluid" alt="">
                                    </div>
                                    <p class="name">KAKA 40L Travel Sports Men Backpack – Black</p>
                                    <p class="offer_price">3500 BDT</p>
                                    <button class="add_cart">Add To Cart</button>
-                                   </a>
+                                   </router-link >
                               </div>
                          </div>
                          <!-- product end -->
@@ -121,7 +121,7 @@
                          <!-- product start -->
                          <div class="col-md-2 col-6">
                               <div class="product-box">
-                                   <a href="">
+                                   <router-link to="">
                                    <div class="image">
                                         <img src="images/product-9.jpg" class="img-fluid" alt="">
                                    </div>
@@ -129,7 +129,7 @@
                                    </p>
                                    <p class="offer_price">400 BDT</p>
                                    <button class="add_cart">Add To Cart</button>
-                                   </a>
+                                   </router-link >
                               </div>
                          </div>
                          <!-- product end -->
