@@ -7,38 +7,8 @@
                     <div class="col-md-12">
                         <div class="nav-item-list">
                             <ul>
-                                <li>
-                                    <router-link to="">Electronics & Home Appliance</router-link>
-                                </li>
-                                <li>
-                                    <router-link to="">Women's Fashion</router-link>
-                                </li>
-                                <li>
-                                    <router-link to="">Gadget Items</router-link>
-                                </li>
-                                <li>
-                                    <router-link to="">Consumer Promotions</router-link>
-                                </li>
-                                <li>
-                                    <router-link to="">Cooking Products</router-link>
-                                </li>
-                                <li>
-                                    <router-link to="">Food Products</router-link>
-                                </li>
-                                <li>
-                                    <router-link to="">Organic Fruits & Vegetables</router-link>
-                                </li>
-                                <li>
-                                    <router-link to="">Health & Beauty</router-link>
-                                </li>
-                                <li>
-                                    <router-link to="">Home & Cleaning</router-link>
-                                </li>
-                                <li>
-                                    <router-link to="">Office & Stationary</router-link>
-                                </li>
-                                <li>
-                                    <router-link to="">Medinice</router-link>
+                                <li v-for="item in category" :key="item.id"> 
+                                    <router-link to="">{{ item.name }}</router-link>
                                 </li>
                             </ul>
                         </div>
@@ -51,7 +21,24 @@
 </template>
 
 <script>
+import axios from "axios"
 export default {
+     data(){
+          return{
+               category: [],
+          }
+     },
      
+     created(){
+          this.initialize()
+     },
+     methods: {
+          initialize(){
+               axios.get("http://127.0.0.1:8000/api/category/",{})
+               .then( res => {
+                    this.category = res.data.category.data
+               })
+          }
+     },
 }
 </script>
