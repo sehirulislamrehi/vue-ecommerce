@@ -464,7 +464,7 @@ button:focus{
   padding: 10px 0;
 }
 .cart-section ul{
-  text-align: center;
+  text-align: right;
 }
 .cart-section ul li{
   display: inline;
@@ -485,8 +485,7 @@ button:focus{
 .cart_list_mob{
   background: white;
   top: 100%;
-  left: 50%;
-  transform: translateX(-50%);
+  right: 0;
   position: absolute;
   z-index: 2;
   width: 300px;
@@ -862,6 +861,10 @@ button:focus{
 }
 .category-carousel .item .col-md-12{
   padding: 0;
+}
+
+.category_desktop a{
+  color: #000000;
 }
 /* website main section left end */
 

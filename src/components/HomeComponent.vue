@@ -14,11 +14,18 @@
                                    <div class="title">
                                         <h3>Categories</h3>
                                    </div>
-                                   <ul>       
-                                        <li class="nav-click-pc" id="cat-id-1" v-for="item in category" :key="item.id" >
-                                             <i class="fas fa-bolt"></i>
+                                   <ul>      
+                                        <router-link v-for="item in category" :key="item.id" :to='{
+                                             name: "category",
+                                             params: {
+                                                  name: item.slug
+                                             }
+                                        }' >
+                                        <li class="nav-click-pc" id="cat-id-1"  >
                                              {{ item.name }}
                                         </li>
+                                        </router-link> 
+                                        
                                    </ul>
                               </div>
                               <!-- category part end -->
@@ -75,7 +82,12 @@
                                              <!-- item start -->
                                              <div class="item" v-for="item in category" :key="item.id">
                                                   <div class="col-md-12">
-                                                       <router-link to="" class="horizontal_item">
+                                                       <router-link :to='{
+                                                            name: "category",
+                                                            params: {
+                                                                 name: item.slug
+                                                            }
+                                                       }' class="horizontal_item">
                                                             <div class="">
                                                                  <div class="icon">
                                                                       <img :src="item.image" alt="">
@@ -104,7 +116,12 @@
                                         </div>
 
                                         <div class="col-md-6 col-4" style="text-align: right;">
-                                             <router-link to="category">View All</router-link >
+                                             <router-link :to='{
+                                                  name: "category",
+                                                  params: {
+                                                       name: item.slug
+                                                  }
+                                             }'>View All</router-link >
                                         </div>
                                    </div>
                                    <!-- title row end -->
@@ -120,7 +137,12 @@
                                         <!-- product start -->
                                         <div class="col-md-3 col-6" v-for="product in item.product.data" :key="product.id" >
                                              <div class="product-box">
-                                                  <router-link to="">
+                                                  <router-link :to='{
+                                                            name: "productdetails",
+                                                            params: {
+                                                                 slug: product.slug
+                                                            }
+                                                       }'>
                                                        <div class="image">
                                                             <img :src="product.image" class="img-fluid" alt="">
                                                        </div>

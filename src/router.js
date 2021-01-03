@@ -29,7 +29,7 @@ const routes = [
           component: Register
      },
      {
-          path: "/productdetails",
+          path: "/productdetails/:slug",
           name: "productdetails",
           component: ProductDetails
      },
@@ -49,7 +49,7 @@ const routes = [
           component: Checkout
      },
      {
-          path: "/category",
+          path: "/category/:name",
           name: "category",
           component: Category
      }

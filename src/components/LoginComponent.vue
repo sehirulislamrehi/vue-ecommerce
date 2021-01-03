@@ -21,7 +21,6 @@
                                    </form>
                               </div>
 
-
                               <div class="col-md-4 offset-md-4 col-12">
                                    <p>Not registered yet? Go to <router-link to="register">register</router-link> page</p>
                               </div>

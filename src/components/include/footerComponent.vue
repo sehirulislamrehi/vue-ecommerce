@@ -6,7 +6,7 @@
                <!-- top seciton start -->
                <section class="footer-top">
                     <div class="container-fluid">
-                         <div class="row" style="    width: 100%;">
+                         <div class="row" style="width: 100%;">
 
                               <!-- left part start -->
                               <div class="col-md-3">
@@ -90,7 +90,7 @@
                               <!-- widget item start -->
                               <div class="col-md-2 col-12">
                               <div class="widget-box">
-                                   <img src="images/logo.png" class="img-fluid" alt="">
+                                   <img src="/images/logo.png" class="img-fluid" alt="">
                                    <p>Pellentesque posuere orci lobortis scelerisque blandit. Donec id tellus lacinia anas.</p>
                               </div>
                               </div>
@@ -99,7 +99,7 @@
                               <!-- widget item start -->
                               <div class="col-md-2 col-12">
                               <div class="widget-box">
-                                   <img src="images/bkash_payment_logo-2.png" class="img-fluid" alt="">
+                                   <img src="/images/bkash_payment_logo-2.png" class="img-fluid" alt="">
                               </div>
                               </div>
                               <!-- widget item end -->

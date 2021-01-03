@@ -13,13 +13,27 @@
       <!-- search section start -->
       <SearchPc />
       <!-- search section end -->
-
-      <!-- navbar start -->
-      <NavPc />
-      <!-- navbar end -->
-
     </div>
     <!-- for pc end -->
+
+
+    <!-- for mob start -->
+    <div class="for-mob">
+
+      <!-- sIdeBaR start -->
+      <Sidebar /> 
+      <!-- sIdeBaR end -->
+
+      <!-- search mob start -->
+      <Search />
+      <!-- search mob end -->
+
+      <!-- cart section start -->
+      <Cart />
+      <!-- cart section end -->
+
+    </div>
+    <!-- for mob end -->
 
     <!-- all pages are here -->
     <router-view></router-view>
@@ -35,17 +49,29 @@
 <script>
 
 import Ad from "./components/topbar/AdComponent";
+
+//for pc start
 import Info from "./components/topbar/pc/InfoComponent";
 import SearchPc from "./components/topbar/pc/SearchComponent";
-import NavPc from "./components/topbar/pc/NavComponent";
-import Footer from "./components/include/footerComponent"
+import Footer from "./components/include/footerComponent";
+//for pc end
+
+//for mob start
+import Sidebar from "./components/topbar/mob/SidebarComponent";
+import Search from "./components/topbar/mob/SearchComponent";
+import Cart from "./components/topbar/mob/CartComponent"
+//for mob end
+
+
 
 export default {
   components: {
     Ad,
     Info,
     SearchPc,
-    NavPc,
+    Sidebar,
+    Search,
+    Cart,
     Footer,
   },
 };

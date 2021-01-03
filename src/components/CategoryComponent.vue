@@ -4,144 +4,67 @@
                <div class="container">
                     <div class="row" style="margin-bottom: 30px;">
                          <div class="col-md-12">
-                              <h4>Gadget Items</h4>
+                              <h4>{{category_name}}</h4>
                          </div>
                     </div>
 
-                    <div class="row">
+                    <div class="row" v-if="product.length > 0">
 
                          <!-- product start -->
-                         <div class="col-md-2 col-6">
+                         <div class="col-md-2 col-6" v-for="item in product" :key="item.id" >
                               <div class="product-box">
-                                   <router-link to="">
-                                   <div class="image">
-                                        <img src="images/product-6.jpg" class="img-fluid" alt="">
-                                   </div>
-                                   <p class="name">6 Blade USB Rechargeable Portable Mini Juicer-Blue</p>
-                                   <!-- <p class="regular_price">100 BDT</p> -->
-                                   <p class="offer_price">50 BDT</p>
-                                   <button class="add_cart">Add To Cart</button>
+                                   <router-link :to='{
+                                             name: "productdetails",
+                                             params: {
+                                                  slug: item.slug
+                                             }
+                                        }'>
+                                        <div class="image">
+                                             <img :src="item.image" class="img-fluid" alt="">
+                                        </div>
+                                        <p class="name">{{ item.name }}</p>
+                                        <!-- <p class="regular_price">100 BDT</p> -->
+                                        <p class="offer_price">{{ item.regular_price }}</p>
+                                        <button class="add_cart">Add To Cart</button>
                                    </router-link >
                               </div>
                          </div>
                          <!-- product end -->
-
-                         <!-- product start -->
-                         <div class="col-md-2 col-6">
-                              <div class="product-box">
-                                   <router-link to="">
-                                   <div class="image">
-                                        <img src="images/product-8.jpg" class="img-fluid" alt="">
-                                   </div>
-                                   <p class="name">KAKA 40L Travel Sports Men Backpack – Black</p>
-                                   <p class="offer_price">3500 BDT</p>
-                                   <button class="add_cart">Add To Cart</button>
-                                   </router-link >
-                              </div>
-                         </div>
-                         <!-- product end -->
-
-                         <!-- product start -->
-                         <div class="col-md-2 col-6">
-                              <div class="product-box">
-                                   <router-link to="">
-                                   <div class="image">
-                                        <img src="images/product-9.jpg" class="img-fluid" alt="">
-                                   </div>
-                                   <p class="name">Toothbrush Toothpaste Automatic Dispenser Organizer-White
-                                   </p>
-                                   <p class="offer_price">400 BDT</p>
-                                   <button class="add_cart">Add To Cart</button>
-                                   </router-link >
-                              </div>
-                         </div>
-                         <!-- product end -->
-
-                         <!-- product start -->
-                         <div class="col-md-2 col-6">
-                              <div class="product-box">
-                                   <router-link to="">
-                                   <div class="image">
-                                        <img src="images/product-10.jpg" class="img-fluid" alt="">
-                                   </div>
-                                   <p class="name">Multifunction Foldable Kitchen Strainer Bag</p>
-                                   <p class="offer_price">100 BDT</p>
-                                   <button class="add_cart">Add To Cart</button>
-                                   </router-link >
-                              </div>
-                         </div>
-                         <!-- product end -->
-
-                         <!-- product start -->
-                         <div class="col-md-2 col-6">
-                              <div class="product-box">
-                                   <router-link to="">
-                                   <div class="image">
-                                        <img src="images/product-7.jpg" class="img-fluid" alt="">
-                                   </div>
-                                   <p class="name">Three Layer Drain Soap Holder</p>
-                                   <p class="offer_price">180 BDT</p>
-                                   <button class="add_cart">Add To Cart</button>
-                                   </router-link >
-                              </div>
-                         </div>
-                         <!-- product end -->
-
-                         <!-- product start -->
-                         <div class="col-md-2 col-6">
-                              <div class="product-box">
-                                   <router-link to="">
-                                   <div class="image">
-                                        <img src="images/product-6.jpg" class="img-fluid" alt="">
-                                   </div>
-                                   <p class="name">6 Blade USB Rechargeable Portable Mini Juicer-Blue</p>
-                                   <p class="regular_price">100 BDT</p>
-                                   <p class="offer_price">50 BDT</p>
-                                   <button class="add_cart">Add To Cart</button>
-                                   </router-link >
-                              </div>
-                         </div>
-                         <!-- product end -->
-
-                         <!-- product start -->
-                         <div class="col-md-2 col-6">
-                              <div class="product-box">
-                                   <router-link to="">
-                                   <div class="image">
-                                        <img src="images/product-8.jpg" class="img-fluid" alt="">
-                                   </div>
-                                   <p class="name">KAKA 40L Travel Sports Men Backpack – Black</p>
-                                   <p class="offer_price">3500 BDT</p>
-                                   <button class="add_cart">Add To Cart</button>
-                                   </router-link >
-                              </div>
-                         </div>
-                         <!-- product end -->
-
-                         <!-- product start -->
-                         <div class="col-md-2 col-6">
-                              <div class="product-box">
-                                   <router-link to="">
-                                   <div class="image">
-                                        <img src="images/product-9.jpg" class="img-fluid" alt="">
-                                   </div>
-                                   <p class="name">Toothbrush Toothpaste Automatic Dispenser Organizer-White
-                                   </p>
-                                   <p class="offer_price">400 BDT</p>
-                                   <button class="add_cart">Add To Cart</button>
-                                   </router-link >
-                              </div>
-                         </div>
-                         <!-- product end -->
-
                     </div>
+
+                    <div class="row" v-if="product.length == 0">
+                         <div class="col-md-12 alert alert-warning">
+                              <p>No product found in this category</p>
+                         </div>
+                    </div>
+
                </div>
           </section>
      </div>
 </template>
 
 <script>
+import axios from "axios";
 export default {
-     
+     data(){
+          return{
+               product: [],
+               category_name:[],
+          }
+     },
+     created(){
+          this.initialize()
+     },
+     methods:{
+          initialize(){
+               let category_slug = this.$route.params.name
+               console.log(category_slug)
+               axios.get(`http://127.0.0.1:8000/api/category/${category_slug}`,{})
+               .then( res => {
+                    this.category_name = res.data.category
+                    this.product = res.data.product.data
+               })               
+          }
+     }
 }
 </script>

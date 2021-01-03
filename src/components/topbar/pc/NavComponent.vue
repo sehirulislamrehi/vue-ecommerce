@@ -8,7 +8,13 @@
                         <div class="nav-item-list">
                             <ul>
                                 <li v-for="item in category" :key="item.id"> 
-                                    <router-link to="">{{ item.name }}</router-link>
+                                    <router-link :to='{
+                                         name: "category",
+                                         params: {
+                                              name: item.slug
+                                         }
+
+                                    }'>{{ item.name }}</router-link>
                                 </li>
                             </ul>
                         </div>
