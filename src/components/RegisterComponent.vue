@@ -4,9 +4,6 @@
                <div class="container">
                     <div class="row">
                          <div class="auth-box">
-                              <div class="alert alert-success" ref="success">
-                                   <p>Registration successfully done</p>
-                              </div>
   
                               <div class="col-md-4 offset-md-4 col-12">
                                    <h4>Register Here</h4>
@@ -51,7 +48,11 @@
                </div>
           </section>
 
-          
+          <!-- snackbar start -->
+          <div class="snackbar" ref="snackbar" @click="closeSnackbar">
+               
+          </div>
+          <!-- snackbar end -->
 
      </div>
 </template>
@@ -69,10 +70,13 @@ export default {
           }
      },
       mounted(){
-           this.$refs['success'].style.display = "none"
+           this.$refs['snackbar'].style.display = "none"
            this.$refs['spinner-border'].style.display = "none"
      },
      methods: {
+          closeSnackbar(){
+               this.$refs['snackbar'].style.display = "none"
+          },
           registration(){
                this.$refs['spinner-border'].style.display = "inline-block"
                this.errors = []
@@ -84,7 +88,8 @@ export default {
                axios.post("http://127.0.0.1:8000/api/visitor/registration",form)
                .then(res => {
                     if( res.data.visitor ){
-                         this.$refs['success'].style.display = "block"
+                         this.$refs['snackbar'].style.display = "block"
+                         this.$refs['snackbar'].innerHTML = "Registration successfull done"
                          this.$refs['spinner-border'].style.display = "none"
                     }
                })

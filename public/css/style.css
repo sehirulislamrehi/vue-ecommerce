@@ -94,6 +94,24 @@ button:focus{
   width: 1rem;
   height: 1rem;
 }
+.snackbar{
+  font-family: "Bree Serif", serif;
+    position: fixed;
+    top: 90%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #605e5e;
+    color: white;
+    text-indent: inherit;
+    border-radius: 5px;
+    box-shadow: #84c225 2px 2px 3px 0px;
+    padding: 20px 100px;
+    cursor: pointer;
+    z-index: 2;
+}
+.snackbar:hover{
+  background: #928d8d;
+}
 /* global css end */
 
 

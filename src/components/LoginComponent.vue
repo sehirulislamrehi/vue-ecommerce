@@ -7,16 +7,23 @@
                               <div class="col-md-4 offset-md-4 col-12">
                                    <h4>Login Here</h4>
                                    <form action="" method="">
-                                        <div class="form-group">
+                                        <div class="form-group" style="position: relative; margin-top: 20px;">
                                              <label>Email</label>
-                                             <input type="email" class="form-control" placeholder="Enter your email address" required>
+                                             <input type="email" class="form-control" v-model="email" placeholder="Enter your email address" required>
+                                             <small v-if="errors.email" class="text-red">{{ errors.email[0] }}</small>
                                         </div>
-                                        <div class="form-group">
+                                        <div class="form-group" style="position: relative; margin-top: 20px;">
                                              <label>Password</label>
-                                             <input type="password" class="form-control" placeholder="Enter your password" required>
+                                             <input type="password" class="form-control" v-model="password" placeholder="Enter your password" required>
+                                             <small v-if="errors.password" class="text-red">{{ errors.password[0] }}</small>
                                         </div>
-                                        <div class="form-group"> 
-                                             <button type="button" class="auth-submit">Login</button>
+                                        <div class="form-group" style="position: relative; margin-top: 20px;"> 
+                                             <button type="button" class="auth-submit" @click="doLogin" >
+                                                  <div class="spinner-border" role="status" ref="spinner-border">
+                                                       <span class="sr-only">Loading...</span>
+                                                  </div>
+                                                  Login
+                                             </button>
                                         </div>
                                    </form>
                               </div>
@@ -28,11 +35,65 @@
                     </div>
                </div>
           </section>
+
+          <!-- snackbar start -->
+          <div class="snackbar" ref="snackbar" @click="closeSnackbar">
+               
+          </div>
+          <!-- snackbar end -->
+
+
      </div>
 </template>
 
 <script>
+import axios from "axios"
 export default {
-     
+     data(){
+          return{
+               email: "",
+               password: "",
+               errors: [],
+          }
+     },
+     mounted(){
+          this.$refs['snackbar'].style.display = "none"
+          this.$refs['spinner-border'].style.display = "none"
+     },
+     methods: {
+          closeSnackbar(){
+               this.$refs['snackbar'].style.display = "none"
+          },
+          doLogin(){
+               this.errors = []
+               this.$refs['spinner-border'].style.display = "inline-block"
+               let form = new FormData()
+               form.append('email', this.email)
+               form.append('password', this.password)
+               axios.post("http://127.0.0.1:8000/api/visitor/signin", form)
+               .then( res =>  {
+                    if( res.data.invalid ){
+                         this.$refs['snackbar'].style.display = "block"
+                         this.$refs['snackbar'].innerHTML = res.data.invalid
+                         this.$refs['spinner-border'].style.display = "none"
+                    }
+                    
+                    if( res.data.token ){
+                         localStorage.setItem('token', res.data.token)
+                         this.$router
+                         .push("/profile")
+                         .then()
+                    }
+               })
+               .catch( error => {
+                    
+                    
+                    
+                    this.$refs['spinner-border'].style.display = "none"
+                    let singleError = error.response.data.error
+                    this.errors = {...singleError}
+               })
+          }
+     }
 }
 </script>

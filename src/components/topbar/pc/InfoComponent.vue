@@ -38,20 +38,14 @@
                     <div class="col-md-7 top-col-right">
                         <div class="top-useful-link">
                             <ul>
-                                <li>
-                                    <router-link to="/profile">
+                                <li  >
+                                    <router-link to="/profile" ref="profile">
                                         Profile
                                     </router-link>
                                 </li>
                                 <li>
                                     <router-link to="/shop">
                                         Our Shop
-                                    </router-link>
-                                </li>
-                                <li>
-                                    <router-link to="login">
-                                        <i class="fas fa-user"></i>
-                                        Sign In
                                     </router-link>
                                 </li>
                             </ul>
@@ -66,6 +60,6 @@
 </template>
 <script>
 export default {
-     
+    
 }
 </script>

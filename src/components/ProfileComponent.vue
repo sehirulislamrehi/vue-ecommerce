@@ -10,7 +10,7 @@
                          <div class="col-md-11">
                               <h4>Sehirul Islam Rehi</h4>
                               <p style="margin:10px 0">mdsehirulislamrehi@gmail.com</p>
-                              <button>Logout</button>
+                              <button @click="logout">Logout</button>
                          </div>
                     </div>
 
@@ -55,6 +55,18 @@
 
 <script>
 export default {
-     
+     data(){
+          return{
+
+          }
+     }, 
+     methods: {
+          logout(){
+               localStorage.removeItem('token')
+               this.$router
+               .push("/login")
+               .then()
+          }
+     }
 }
 </script>

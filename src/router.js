@@ -21,7 +21,14 @@ const routes = [
      {
           path: "/login",
           name: "login",
-          component: Login
+          component: Login,
+           beforeEnter: (to, from,next) => {
+               if( localStorage.getItem("token") ){
+                    return false
+               }
+               next()
+           }
+           
      },
      {
           path:"/register",
@@ -41,7 +48,15 @@ const routes = [
      {
           path: "/profile",
           name: "profile",
-          component: Profile
+          component: Profile,
+          beforeEnter: (to, from, next) => {
+               if( localStorage.getItem("token") ){
+                    next();
+               }
+               else{
+                    next("/login");
+               }
+          }
      },
      {
           path: "/checkout",
