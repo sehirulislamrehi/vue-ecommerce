@@ -49,7 +49,7 @@ export default {
      data(){
           return{
                product: [],
-               category_name:[],
+               category_name:"",
           }
      },
      created(){

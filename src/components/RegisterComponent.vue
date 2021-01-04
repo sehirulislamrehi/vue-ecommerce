@@ -4,27 +4,41 @@
                <div class="container">
                     <div class="row">
                          <div class="auth-box">
+                              <div class="alert alert-success" ref="success">
+                                   <p>Registration successfully done</p>
+                              </div>
+  
                               <div class="col-md-4 offset-md-4 col-12">
                                    <h4>Register Here</h4>
                                    <form action="" method="">
-                                        <div class="form-group">
+                                        <div class="form-group" style="position: relative; margin-top: 20px">
                                              <label>Name</label>
                                              <input type="name" class="form-control" placeholder="Enter your fullname" v-model="name" required>
+                                             <small v-if="errors.name" class="text-red">{{ errors.name[0] }}</small>
                                         </div>
-                                        <div class="form-group">
+                                        <div class="form-group" style="position: relative; margin-top: 20px">
                                              <label>Email</label>
                                              <input type="email" class="form-control" placeholder="Enter your email address" v-model="email" required>
+                                             <small v-if="errors.email" class="text-red">{{ errors.email[0] }}</small>
                                         </div>
-                                        <div class="form-group">
+                                        <div class="form-group" style="position: relative; margin-top: 20px">
                                              <label>Password</label>
                                              <input type="password" class="form-control" placeholder="Enter your password" v-model="password" required>
+                                             <small v-if="errors.password" class="text-red">{{ errors.password[0] }}</small>
                                         </div>
-                                        <div class="form-group">
+                                        <div class="form-group" style="position: relative; margin-top: 20px">
                                              <label>Re-type Password</label>
                                              <input type="password" class="form-control" placeholder="Enter your password again" v-model="password_confirmation" required>
+                                             <small v-if="errors.password_confirmation" class="text-red">{{ errors.password_confirmation[0] }}</small>
                                         </div>
-                                        <div class="form-group"> 
-                                             <button type="button" @click="registration" class="auth-submit">Register</button>
+                                        <div class="form-group" style="position: relative; margin-top: 20px"> 
+                                             <button type="button" @click="registration" class="auth-submit">
+                                                  <div class="spinner-border" role="status" ref="spinner-border">
+                                                       <span class="sr-only">Loading...</span>
+                                                  </div>
+                                                  Register
+                                             </button>
+                                             
                                         </div>
                                    </form>
                               </div>
@@ -36,10 +50,14 @@
                     </div>
                </div>
           </section>
+
+          
+
      </div>
 </template>
 
 <script>
+import axios from "axios"
 export default {
      data(){
           return{
@@ -47,13 +65,34 @@ export default {
                email: "",
                password: "",
                password_confirmation: "",
+               errors: [],
           }
+     },
+      mounted(){
+           this.$refs['success'].style.display = "none"
+           this.$refs['spinner-border'].style.display = "none"
      },
      methods: {
           registration(){
+               this.$refs['spinner-border'].style.display = "inline-block"
+               this.errors = []
                let form = new FormData();
                form.append("name", this.name)
-               console.log(form)
+               form.append("email", this.email)
+               form.append("password", this.password)
+               form.append("password_confirmation", this.password_confirmation)
+               axios.post("http://127.0.0.1:8000/api/visitor/registration",form)
+               .then(res => {
+                    if( res.data.visitor ){
+                         this.$refs['success'].style.display = "block"
+                         this.$refs['spinner-border'].style.display = "none"
+                    }
+               })
+               .catch ( err => {
+                    this.$refs['spinner-border'].style.display = "none"
+                    let singleError = err.response.data.error
+                    this.errors = {...singleError}
+               })
           }
      }
 }
