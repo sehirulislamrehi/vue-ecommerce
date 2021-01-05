@@ -46,6 +46,24 @@
     .product-item-row .detail, .product-item-row .image{
         text-align: center;
     }
+    .snackbar{
+        font-family: "Bree Serif", serif;
+        position: fixed;
+        top: 80%;
+        left: 50%;
+        transform: translateX(-50%);
+        background: #605e5e;
+        color: white;
+        text-indent: inherit;
+        border-radius: 5px;
+        box-shadow: #84c225 2px 2px 3px 0px;
+        padding: 20px 0px;
+        cursor: pointer;
+        z-index: 10;
+        width: 80%;
+        text-align: center;
+      
+      }
 }
 
 
@@ -84,6 +102,24 @@
     .product-box .add_cart{
         top: 0;
     }
+    .snackbar{
+        font-family: "Bree Serif", serif;
+        position: fixed;
+        top: 80%;
+        left: 50%;
+        transform: translateX(-50%);
+        background: #605e5e;
+        color: white;
+        text-indent: inherit;
+        border-radius: 5px;
+        box-shadow: #84c225 2px 2px 3px 0px;
+        padding: 20px 0px;
+        cursor: pointer;
+        z-index: 10;
+        width: 80%;
+        text-align: center;
+      
+      }
 }
 
 

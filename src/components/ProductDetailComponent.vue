@@ -32,7 +32,7 @@
                                    </p>
 
                                    <!-- add to cart button -->
-                                   <button>Add to cart</button>
+                                   <button @click="addToCart(product_detail.id)" ref="addToCart">Add to cart</button>
                               </div>
                          </div>
                          <!-- right side product detail end -->
@@ -63,6 +63,9 @@ export default {
                .then( res => {
                     this.product_detail = res.data.product
                })
+          },
+          addToCart(id){
+               this.$root.$emit('addToCart', id) 
           }
      }
 }

@@ -25,8 +25,8 @@
                                         <p class="name">{{ item.name }}</p>
                                         <!-- <p class="regular_price">100 BDT</p> -->
                                         <p class="offer_price">{{ item.price }} BDT</p>
-                                        <button class="add_cart">Add To Cart</button>
                                    </router-link >
+                                   <button class="add_cart" @click="addToCart(item.id)" ref="addToCart">Add To Cart</button>
                               </div>
                          </div>
                          <!-- product end -->
@@ -55,6 +55,9 @@ export default {
                .then( res => {
                     this.product = res.data.product.data
                })
+          },
+          addToCart(id){
+               this.$root.$emit('addToCart', id) 
           }
      }
 }

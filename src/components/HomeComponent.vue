@@ -122,6 +122,7 @@
                                                        name: item.slug
                                                   }
                                              }'>View All</router-link >
+                                            
                                         </div>
                                    </div>
                                    <!-- title row end -->
@@ -149,8 +150,11 @@
                                                        <p class="name">{{ product.name }}</p>
                                                        <!-- <p class="regular_price">100 BDT</p> -->
                                                        <p class="offer_price">{{ product.regular_price }} BDT</p>
-                                                       <button class="add_cart">Add To Cart</button>
                                                   </router-link >
+                                                  <button class="add_cart" @click="addToCart(product.id)" ref="addToCart">
+                                                       
+                                                       Add To Cart
+                                                  </button>
                                              </div>
                                         </div>
                                         <!-- product end -->
@@ -283,6 +287,12 @@
           </section>
           <!-- main website section end -->
 
+          <!-- snackbar start -->
+          <div class="snackbar" ref="snackbar" @click="closeSnackbar">
+               
+          </div>
+          <!-- snackbar end -->
+
      </div>
 </template>
 
@@ -291,11 +301,23 @@
 import carousel from 'vue-owl-carousel'
 import axios from "axios"
 
+
 export default {
+     props: ['id'],
      data(){
           return{
                category: [],
+               cartsample: {
+                    id: "",
+                    name: "",
+                    image: "",
+                    qty: "",
+                    price: "",
+               },
           }
+     },
+     mounted(){
+          this.$refs['snackbar'].style.display = "none"
      },
      components:{ 
           carousel
@@ -303,13 +325,18 @@ export default {
      created(){
           this.initialize()
      },
-    
      methods: {
           initialize(){
                axios.get("http://127.0.0.1:8000/api/category/",{})
                .then( res => {
                     this.category = res.data.category.data
                })
+          },
+          closeSnackbar(){
+               this.$refs['snackbar'].style.display = "none"
+          },
+          addToCart(id){
+               this.$root.$emit('addToCart', id) 
           }
      },
 }

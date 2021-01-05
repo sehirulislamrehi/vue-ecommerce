@@ -13,21 +13,25 @@
                                         <th scope="col">Name</th>
                                         <th scope="col">Quantity</th>
                                         <th scope="col">Price</th>
+                                        <th scope="col">Action</th>
                                    </tr>
                                    </thead>
                                    <tbody>
-                                   <tr>
+                                   <tr v-for="item in cart_product" :key="item.id">
                                         <td>
-                                             <img src="images/product-1.jpg" width="32px" alt="">
+                                             <img :src="item.image" width="32px" alt="">
                                         </td>
-                                        <td>6 Blade USB Rechargeable Portable Mini Juicer-Blue</td>
+                                        <td>{{ item.name }}</td>
                                         <td>
                                              <button @click="minus">-</button>
-                                             <input type="number" v-model="quantity" readonly>
+                                             <input type="number" class="quantity" v-model="quantity"  readonly>
                                              <button @click="plus">+</button>
                                         </td>
                                         <td>
-                                             100 BDT
+                                             {{item.price}} BDT
+                                        </td>
+                                        <td>
+                                             <button @click="removeCart(item.id)">Remove Cart</button>
                                         </td>
                                    </tr>
                                    </tbody>
@@ -38,8 +42,8 @@
                          <div class="col-md-4">
                               <div class="order-summary">
                                    <h4>Order Summary</h4>
-                                   <p>Delivery Charge 50 BDT</p>
-                                   <p>Total: <span>1000BDT</span> </p>
+                                   <p>Delivery Charge {{ delivery_charge }} BDT</p>
+                                   <p>Total: <span>{{total}} BDT</span> </p>
                                    <button>Place Order</button>
                               </div>
                          </div>
@@ -48,6 +52,14 @@
 
                </div>
           </section>
+
+     <!-- snackbar start -->
+        <div class="snackbar" ref="snackbar" @click="closeSnackbar">
+            
+        </div>
+        <!-- snackbar end -->
+
+
      </div>
 </template>
 
@@ -56,17 +68,65 @@ export default {
      
      data(){
           return{
-               quantity: 1,
+               quantity: [],
+               total: 0,
+               delivery_charge: 50,
+               cart_product: [],
           }
      },
+     created(){
+        this.cart()
+     },
+     mounted(){
+          this.$refs['snackbar'].style.display = "none"
+     },
      methods: {
+          closeSnackbar(){
+               this.$refs['snackbar'].style.display = "none"
+          },
+          cart(){
+               let cart = JSON.parse(localStorage.getItem('cart'))
+               this.cart_product = cart
+               this.total = this.delivery_charge
+               for( let x in cart){
+                    this.quantity[x] = cart[x].qty
+                    this.total += cart[x].price
+               }
+          }, 
           plus(){
-               this.quantity+= 1
+               this.$refs['quantity'].value = 0
           },
           minus(){
-               if(this.quantity != 1){
-                    this.quantity-= 1
+               if(this.$refs['quantity'] != 1){
+                    this.$refs['quantity']+= 1
                }
+          },
+          removeCart(id){
+               this.$root.$emit('removeAllCart', id);
+               let cart = JSON.parse(localStorage.getItem('cart'))
+             cart.filter( (value, index) => {
+                 if( value.id == id ){
+                     cart.splice(index,1)
+                     localStorage.setItem('cart', JSON.stringify(cart))
+
+                    let cart_add = JSON.parse(localStorage.getItem('cart'))
+                    this.cart_product = cart_add
+
+                    this.$refs['snackbar'].style.display = "block"
+                    this.$refs['snackbar'].innerHTML = "Product removed from the cart"
+                    this.cart_length = this.cart_product.length
+
+                    if( this.cart_product.length == 0 ){
+                        this.cart_empty = true
+                        this.checkout = false
+                    }else{
+                        this.cart_empty = false
+                        this.checkout = true
+                    }
+                 }
+             })
+
+               
           }
      }
      

@@ -12,172 +12,19 @@
             <div class="nav-list-mob">
 
                 <!-- dropdown nav start -->
-                <div class="nav-dropdown">
-                    <p class="nav-click" id="nav-item-mob-1"> <i class="fas fa-shopping-bag"></i> Electronics &amp; Home
-                        Appliance <i class="fas fa-angle-right"></i> </p>
-                    <div class="nav-dropdown-child nav-item-mob-1">
-                        <ul>
-                            <li>
-                                <a href="">Item One</a>
-                            </li>
-                            <li>
-                                <a href="">Item Two</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <!-- dropdown nav end -->
-                <!-- dropdown nav start -->
-                <div class="nav-dropdown">
-                    <p class="nav-click" id="nav-item-mob-2"> <i class="fas fa-shopping-bag"></i> Women's Fashion <i class="fas fa-angle-right"></i> </p>
-                    <div class="nav-dropdown-child nav-item-mob-2">
-                        <ul>
-                            <li>
-                                <a href="">Item One</a>
-                            </li>
-                            <li>
-                                <a href="">Item Two</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <!-- dropdown nav end -->
-                <!-- dropdown nav start -->
-                <div class="nav-dropdown">
-                    <p class="nav-click" id="nav-item-mob-3"> <i class="fas fa-shopping-bag"></i> Gadget Items <i class="fas fa-angle-right"></i> </p>
-                    <div class="nav-dropdown-child nav-item-mob-3">
-                        <ul>
-                            <li>
-                                <a href="">Item One</a>
-                            </li>
-                            <li>
-                                <a href="">Item Two</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <!-- dropdown nav end -->
-                <!-- dropdown nav start -->
-                <div class="nav-dropdown">
-                    <p class="nav-click" id="nav-item-mob-4"> <i class="fas fa-shopping-bag"></i> Consumer Promotions <i class="fas fa-angle-right"></i> </p>
-                    <div class="nav-dropdown-child nav-item-mob-4">
-                        <ul>
-                            <li>
-                                <a href="">Item One</a>
-                            </li>
-                            <li>
-                                <a href="">Item Two</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <!-- dropdown nav end -->
-                <!-- dropdown nav start -->
-                <div class="nav-dropdown">
-                    <p class="nav-click" id="nav-item-mob-5"> <i class="fas fa-shopping-bag"></i> Cooking Products <i class="fas fa-angle-right"></i> </p>
-                    <div class="nav-dropdown-child nav-item-mob-5">
-                        <ul>
-                            <li>
-                                <a href="">Item One</a>
-                            </li>
-                            <li>
-                                <a href="">Item Two</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <!-- dropdown nav end -->
-                <!-- dropdown nav start -->
-                <div class="nav-dropdown">
-                    <p class="nav-click" id="nav-item-mob-6"> <i class="fas fa-shopping-bag"></i> Food Products <i class="fas fa-angle-right"></i> </p>
-                    <div class="nav-dropdown-child nav-item-mob-6">
-                        <ul>
-                            <li>
-                                <a href="">Item One</a>
-                            </li>
-                            <li>
-                                <a href="">Item Two</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <!-- dropdown nav end -->
-                <!-- dropdown nav start -->
-                <div class="nav-dropdown">
-                    <p class="nav-click" id="nav-item-mob-7"> <i class="fas fa-shopping-bag"></i> Organic Fruits &amp;
-                        Vegetables <i class="fas fa-angle-right"></i> </p>
-                    <div class="nav-dropdown-child nav-item-mob-7">
-                        <ul>
-                            <li>
-                                <a href="">Item One</a>
-                            </li>
-                            <li>
-                                <a href="">Item Two</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <!-- dropdown nav end -->
-                <!-- dropdown nav start -->
-                <div class="nav-dropdown">
-                    <p class="nav-click" id="nav-item-mob-8"> <i class="fas fa-shopping-bag"></i> Health &amp; Beauty <i class="fas fa-angle-right"></i> </p>
-                    <div class="nav-dropdown-child nav-item-mob-8">
-                        <ul>
-                            <li>
-                                <a href="">Item One</a>
-                            </li>
-                            <li>
-                                <a href="">Item Two</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <!-- dropdown nav end -->
-                <!-- dropdown nav start -->
-                <div class="nav-dropdown">
-                    <p class="nav-click" id="nav-item-mob-9"> <i class="fas fa-shopping-bag"></i> Home &amp; Cleaning <i class="fas fa-angle-right"></i> </p>
-                    <div class="nav-dropdown-child nav-item-mob-9">
-                        <ul>
-                            <li>
-                                <a href="">Item One</a>
-                            </li>
-                            <li>
-                                <a href="">Item Two</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <!-- dropdown nav end -->
-                <!-- dropdown nav start -->
-                <div class="nav-dropdown">
-                    <p class="nav-click" id="nav-item-mob-10"> <i class="fas fa-shopping-bag"></i> Office &amp; Stationary
-                        <i class="fas fa-angle-right"></i>
-                    </p>
-                    <div class="nav-dropdown-child nav-item-mob-10">
-                        <ul>
-                            <li>
-                                <a href="">Item One</a>
-                            </li>
-                            <li>
-                                <a href="">Item Two</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <!-- dropdown nav end -->
-                <!-- dropdown nav start -->
-                <div class="nav-dropdown">
-                    <p class="nav-click" id="nav-item-mob-11"> <i class="fas fa-shopping-bag"></i> Medinice <i class="fas fa-angle-right"></i> </p>
-                    <div class="nav-dropdown-child nav-item-mob-11">
-                        <ul>
-                            <li>
-                                <a href="">Item One</a>
-                            </li>
-                            <li>
-                                <a href="">Item Two</a>
-                            </li>
-                        </ul>
-                    </div>
+                <div class="nav-dropdown" v-for="item in category" :key="item.id">
+                    <router-link :to='{
+                                path: "/category/:name",
+                                name: "category",
+                                params: {
+                                    name: item.slug
+                                }
+
+                        }'>
+                        <p class="nav-click" id="nav-item-mob-1"> <i class="fas fa-shopping-bag"></i> 
+                        {{ item.name }} 
+                        <i class="fas fa-angle-right"></i> </p>
+                    </router-link>
                 </div>
                 <!-- dropdown nav end -->
 
@@ -199,15 +46,7 @@
                                 <div class="form-group cat_block">
                                     <select name="" class="form-control" required="">
                                         <option>All Categories</option>
-                                        <option>Electronics &amp; Home Appliance </option>
-                                        <option>Women's Fashion</option>
-                                        <option>Gadget Items </option>
-                                        <option>Consumer Promotions </option>
-                                        <option>Cooking Products </option>
-                                        <option>Food Products </option>
-                                        <option>Organic Fruits &amp; Vegetables </option>
-                                        <option>Health &amp; Beauty </option>
-                                        <option>Home &amp; Cleaning </option>
+                                        <option v-for="item in category" :key="item.id">{{ item.name }}</option>
                                     </select>
                                 </div>
                                 <div class="form-group search_block">
@@ -226,8 +65,23 @@
 </template>
 
 <script>
+import axios from "axios"
 export default {
+    data(){
+          return{
+               category: [],
+          }
+     },
+     created(){
+          this.initialize()
+     },
     methods: {
+        initialize(){
+               axios.get("http://127.0.0.1:8000/api/category/",{})
+               .then( res => {
+                    this.category = res.data.category.data
+               })
+          },
         showNav(){
             this.$refs['side_bar_mob'].style.transform = "translateX(0)"
             document.getElementsByTagName("BODY")[0].style.overflow = "hidden"

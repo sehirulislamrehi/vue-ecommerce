@@ -13,6 +13,10 @@
       <!-- search section start -->
       <SearchPc />
       <!-- search section end -->
+
+      <!-- nav bar start -->
+      <Nav />
+      <!-- navbar end -->
     </div>
     <!-- for pc end -->
 
@@ -53,6 +57,7 @@ import Ad from "./components/topbar/AdComponent";
 //for pc start
 import Info from "./components/topbar/pc/InfoComponent";
 import SearchPc from "./components/topbar/pc/SearchComponent";
+import Nav from "./components/topbar/pc/NavComponent"
 import Footer from "./components/include/footerComponent";
 //for pc end
 
@@ -69,11 +74,15 @@ export default {
     Ad,
     Info,
     SearchPc,
+    Nav,
     Sidebar,
     Search,
     Cart,
     Footer,
   },
+  methods: {
+    
+  }
    
 };
 </script>

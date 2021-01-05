@@ -61,7 +61,24 @@ const routes = [
      {
           path: "/checkout",
           name: "checkout",
-          component: Checkout
+          component: Checkout,
+          beforeEnter: (to, from, next) => {
+               if( localStorage.getItem("token") ){
+                    if( !localStorage.getItem('cart')  ){
+                         next("/");
+                    }
+                    else if( localStorage.getItem('cart').length == 2 ){
+                         
+                         next("/");
+                    }
+                    else{
+                         next();
+                    }
+               }
+               else{
+                    next("/login");
+               }
+          }
      },
      {
           path: "/category/:name",

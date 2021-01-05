@@ -25,8 +25,8 @@
                                         <p class="name">{{ item.name }}</p>
                                         <!-- <p class="regular_price">100 BDT</p> -->
                                         <p class="offer_price">{{ item.regular_price }}</p>
-                                        <button class="add_cart">Add To Cart</button>
                                    </router-link >
+                                   <button class="add_cart" @click="addToCart(item.id)" ref="addToCart">Add To Cart</button>
                               </div>
                          </div>
                          <!-- product end -->
@@ -52,18 +52,25 @@ export default {
                category_name:"",
           }
      },
+     watch: {
+          '$route.params.name': function () {
+               this.initialize()
+          }
+     },
      created(){
           this.initialize()
      },
      methods:{
           initialize(){
                let category_slug = this.$route.params.name
-               console.log(category_slug)
                axios.get(`http://127.0.0.1:8000/api/category/${category_slug}`,{})
                .then( res => {
                     this.category_name = res.data.category
                     this.product = res.data.product.data
                })               
+          },
+          addToCart(id){
+               this.$root.$emit('addToCart', id) 
           }
      }
 }
