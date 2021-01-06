@@ -63,9 +63,9 @@
                                         </td>
                                         <td>{{ item.name }}</td>
                                         <td>
-                                             <button @click="minus">-</button>
-                                             <input type="number" class="quantity" v-model="quantity" readonly>
-                                             <button @click="plus">+</button>
+                                             <button @click="minus(item.id)">-</button>
+                                             <input type="number" class="quantity" :value="item.qty" readonly>
+                                             <button @click="plus(item.id)">+</button>
                                         </td>
                                         <td>
                                              {{item.price}} BDT
@@ -84,7 +84,7 @@
                                    <h4>Order Summary</h4>
                                    <p>Delivery Charge {{ delivery_charge }} BDT</p>
                                    <p>Total: <span>{{total}} BDT</span> </p>
-                                   <button>Place Order</button>
+                                   <button @click="placeOrder" >Place Order</button>
                               </div>
                          </div>
                     </div>
@@ -95,7 +95,7 @@
 
           <!-- snackbar start -->
         <div class="snackbar" ref="snackbar" @click="closeSnackbar">
-            
+            {{ text }}
         </div>
         <!-- snackbar end -->
 
@@ -115,6 +115,7 @@ import Nav from "./topbar/pc/NavComponent"
 import Sidebar from "./topbar/mob/SidebarComponent";
 import Search from "./topbar/mob/SearchComponent";
 import Cart from "./topbar/mob/CartComponent"
+import axios from 'axios';
 //for mob end
 
 
@@ -135,6 +136,13 @@ export default {
                total: 0,
                delivery_charge: 50,
                cart_product: [],
+               cartsample: {
+                    id: "",
+                    name: "",
+                    image: "",
+                    qty: "",
+                    price: "",
+               },
           }
      },
      created(){
@@ -152,17 +160,56 @@ export default {
                this.cart_product = cart
                this.total = this.delivery_charge
                for( let x in cart){
-                    this.quantity = cart[x].qty
                     this.total += cart[x].price * cart[x].qty
                }
           }, 
-          plus(){
-               this.$refs['quantity'].value = 0
+          plus(id){
+               let cart = JSON.parse(localStorage.getItem('cart'))
+               let exist = false
+               cart.filter( (value, index) => {
+                    if( value.id == id && exist == false){
+                         this.cartsample.id = id
+                         this.cartsample.name = value.name
+                         this.cartsample.image = value.image
+                         this.cartsample.qty = value.qty += 1
+                         this.cartsample.price = value.price 
+                         cart.splice(index,1,this.cartsample)
+                         localStorage.setItem('cart', JSON.stringify(cart))
+
+                         let updated_cart = JSON.parse(localStorage.getItem('cart'))
+                         this.cart_product = updated_cart
+                         this.total+=value.price 
+
+                         this.$refs['snackbar'].style.display = "block"
+                         this.$refs['snackbar'].innerHTML = "Cart Updated"
+                         exist = true
+
+                    }
+               })
           },
-          minus(){
-               if(this.$refs['quantity'] != 1){
-                    this.$refs['quantity']+= 1
-               }
+          minus(id){
+               let cart = JSON.parse(localStorage.getItem('cart'))
+               let exist = false
+               cart.filter( (value, index) => {
+                    if( value.id == id && exist == false && value.qty > 1){
+                         this.cartsample.id = id
+                         this.cartsample.name = value.name
+                         this.cartsample.image = value.image
+                         this.cartsample.qty = value.qty -= 1
+                         this.cartsample.price = value.price 
+                         cart.splice(index,1,this.cartsample)
+                         localStorage.setItem('cart', JSON.stringify(cart))
+
+                         let updated_cart = JSON.parse(localStorage.getItem('cart'))
+                         this.cart_product = updated_cart
+                         this.total-=value.price
+
+                         this.$refs['snackbar'].style.display = "block"
+                         this.$refs['snackbar'].innerHTML = "Cart Updated"
+                         exist = true
+
+                    }
+               })
           },
           removeCart(id){
                let cart = JSON.parse(localStorage.getItem('cart'))
@@ -193,6 +240,54 @@ export default {
                })
 
                
+          },
+          placeOrder(){
+               if( localStorage.getItem('token') ){
+                    this.$refs['snackbar'].style.display = "block"
+                    this.$refs['snackbar'].innerHTML = "Your order is processing"
+
+                    if(localStorage.getItem('cart')){
+                         const cartJson =JSON.parse(localStorage.getItem('cart'));
+                         console.log(cartJson);
+                         const form = new FormData();
+                         cartJson.forEach(value => {
+                              form.append('id[]', value.id)
+                              form.append('qty[]', value.qty)
+                              
+                         })
+                         
+                         form.append("token",localStorage.getItem('token'))
+                         axios.post("http://127.0.0.1:8000/api/placeorder",form)
+                         .then( res => {
+                              if( res.data.success ){
+                                   localStorage.removeItem('cart')
+                                   this.$refs['snackbar'].style.display = "block"
+                                   this.$refs['snackbar'].innerHTML = "Order place successfully"
+                                   localStorage.setItem('orderSuccess','Order placed successfully');
+                                   this.$router
+                                   .push("/profile")
+                              }
+                         })
+                         .catch( err => {
+                              console.log(err.response);
+                         })
+
+                    }else{
+                         localStorage.removeItem('cart')
+                         localStorage.removeItem('token')
+                         this.$router
+                         .push("/login")
+                         this.$refs['snackbar'].style.display = "block"
+                         this.$refs['snackbar'].innerHTML = "Please login first then add to cart and checkout"
+                    }
+                    
+               }else{
+                    localStorage.removeItem('cart')
+                    this.$router
+                    .push("/login")
+                    this.$refs['snackbar'].style.display = "block"
+                    this.$refs['snackbar'].innerHTML = "Login First"
+               }
           }
      }
      

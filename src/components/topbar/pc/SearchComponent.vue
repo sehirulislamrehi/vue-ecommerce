@@ -59,14 +59,14 @@
                                             <li class="cart_box" v-if="this.$route.name != 'checkout'"  id="cart_box" @mouseover="cart_show" @mouseout="cart_hide">
 
                                                 <!-- cart count start -->
-                                                <div class="cart_count">
+                                                <div class="cart_count" v-if="this.cart_length > 0">
                                                     <p>{{ cart_length }}</p>
                                                 </div>
                                                 <!-- cart count end -->
                                                 <i class="fas fa-shopping-basket"></i>
 
                                                 <!-- cart item list -->
-                                                <div class="cart_list" id="cart_list" ref="cart_list" @mouseover="cart_show" @mouseout="cart_hide">
+                                                <div class="cart_list" v-if="this.cart_length > 0" id="cart_list" ref="cart_list" @mouseover="cart_show" @mouseout="cart_hide">
 
                                                     <!-- cart empty start -->
                                                     <div id="cart_empty" v-if="cart_empty == true">
@@ -152,7 +152,9 @@ export default {
         }
     },
     created(){
+
         let cart_add = JSON.parse(localStorage.getItem('cart')) || 0
+        
         this.cart_product = cart_add
         this.cart_length = this.cart_product.length
         if( this.cart_product.length == 0 ){
@@ -162,11 +164,9 @@ export default {
             this.cart_empty = false
             this.checkout = true
         }
-    },
-    mounted(){
-        this.snackbar = false
 
         this.$root.$on('addToCart', (id) => {
+            
                 this.snackbar = true
                 this.text = "Please wait"
 
@@ -184,12 +184,12 @@ export default {
                          this.cartsample.qty = 1
                          this.cartsample.price = res.data.product.offer_price ? res.data.product.offer_price : res.data.product.regular_price
 
-                        //  cart.filter( (value, index) => {
-                        //       if( value.id == res.data.product.id ){
-                        //            cart[index].qty += 1;
-                        //            exist = true
-                        //       }
-                        //  })
+                         cart.filter( (value, index) => {
+                              if( value.id == res.data.product.id ){
+                                   cart[index].qty += 1;
+                                   exist = true
+                              }
+                         })
                          
                          if( exist == false ){
                               cart.push(this.cartsample)
@@ -212,8 +212,6 @@ export default {
                             this.checkout = true
                         }
                         
-
-                         
                     })
                }else{
                     this.snackbar = true
@@ -221,16 +219,28 @@ export default {
                } 
         })
     },
+    mounted(){
+        this.snackbar = false
+
+        
+    
+    },
      methods: {
         
          closeSnackbar(){
                this.snackbar = false
           },
          cart_show(){
-            this.$refs['cart_list'].style.display = "block"
+             if( this.cart_length > 0 ){
+                 this.$refs['cart_list'].style.display = "block"
+             }
+            
          },
          cart_hide(){
-            this.$refs['cart_list'].style.display = "none"
+             if( this.cart_length > 0 ){
+                 this.$refs['cart_list'].style.display = "none"
+             }
+            
          },
          removeCart(id){
         

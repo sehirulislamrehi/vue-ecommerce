@@ -959,6 +959,10 @@ button:focus{
 .product-box p{
   color: #000000;
   text-align: center;
+  
+}
+.product-box .regular_price_off{
+  text-decoration: line-through;
 }
 .product-box .name, .product-box .regular_price{
   color: #928e8e;

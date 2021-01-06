@@ -65,7 +65,8 @@
                                         </div>
                                         <p class="name">{{ item.name }}</p>
                                         <!-- <p class="regular_price">100 BDT</p> -->
-                                        <p class="offer_price">{{ item.price }} BDT</p>
+                                        <p :class="{regular_price_off: item.offer_price}" style="">{{ item.regular_price }} BDT</p>
+                                        <p class="regular_price_price" v-if="item.offer_price">{{ item.offer_price }} BDT</p>
                                    </router-link >
                                    <button class="add_cart" @click="addToCart(item.id)" ref="addToCart">Add To Cart</button>
                               </div>

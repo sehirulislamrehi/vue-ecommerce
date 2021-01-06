@@ -90,10 +90,19 @@
                     </div>
                </div>
           </section>
+
+          <!-- snackbar start -->
+          <div class="snackbar" ref="snackbar" v-if="snackbar == true" @click="closeSnackbar">
+               {{ text }}
+          </div>
+          <!-- snackbar end -->
+
+
      </div>
 </template>
 
 <script>
+import axios from "axios"
 
 import Ad from "./topbar/AdComponent";
 //for pc start
@@ -118,13 +127,37 @@ export default {
           Search,
           Cart,
      },
-     
      data(){
           return{
-
+               snackbar: "",
+               text: "",
           }
      }, 
+     created(){
+          let token = localStorage.getItem('token')
+          axios.get(`http://127.0.0.1:8000/api/profile/order/${token}`,)
+          .then( res => {
+               console.log(res)
+          })
+          .catch( err => {
+               console.log(err.response)
+          })
+     },
+     mounted(){
+        this.snackbar = false
+        if( localStorage.getItem('orderSuccess') ){
+               console.log('a')
+               this.snackbar = true
+               this.text = "Order placed successfully"
+          }
+    },
+     
+     
      methods: {
+          closeSnackbar(){
+               this.snackbar = false
+               localStorage.removeItem('orderSuccess')
+          },
           logout(){
                localStorage.removeItem('token')
                this.$router

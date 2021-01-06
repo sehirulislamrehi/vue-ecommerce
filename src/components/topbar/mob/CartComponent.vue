@@ -78,7 +78,6 @@
 </template>
 
 <script>
-import axios from "axios"
 
 export default {
     data(){
@@ -110,65 +109,24 @@ export default {
             this.cart_empty = false
             this.checkout = true
         }
+
+        
+    
     },
     mounted(){
         this.snackbar = false
 
-        this.$root.$on('addToCart', (id) => {
-                this.snackbar = true
-                this.text = "Please wait"
-
+        this.$root.$on('addToCart', () => {
+    
                 if( localStorage.getItem('token') ){
-                    axios.get(`http://127.0.0.1:8000/api/addtocart/${id}`)
-                    .then( res  => {
-
-                         let cart = JSON.parse(localStorage.getItem('cart')) || [];
-
-                         let exist = false
-
-                         this.cartsample.id = res.data.product.id
-                         this.cartsample.name = res.data.product.name
-                         this.cartsample.image = res.data.product.image
-                         this.cartsample.qty = 1
-                         this.cartsample.price = res.data.product.offer_price ? res.data.product.offer_price : res.data.product.regular_price
-
-                         cart.filter( (value, index) => {
-                              if( value.id == res.data.product.id ){
-                                   
-                                   cart[index].qty += 1;
-                                   exist = true
-                              }
-                         })
-                         
-                         if( exist == false ){
-                              cart.push(this.cartsample)
-                         }
-
-                        localStorage.setItem('cart', JSON.stringify(cart))
-
-                        let cart_add = JSON.parse(localStorage.getItem('cart'))
-                        this.cart_product = cart_add
-
-                        this.snackbar = true
-                        this.text = "Product added to the cart"
-                        this.cart_length = this.cart_product.length
-
-                        if( this.cart_product.length == 0 ){
-                            this.cart_empty = true
-                            this.checkout = false
-                        }else{
-                            this.cart_empty = false
-                            this.checkout = true
-                        }
-                        
-
-                         
-                    })
-               }else{
                     this.snackbar = true
-                    this.text = "PLease login first"
-               } 
+                    this.text = "Product added to the cart"
+                }else{
+                     this.snackbar = true
+                    this.text = "Please login first"
+                }
         })
+        
     },
     methods: {
         closeSnackbar(){
@@ -176,6 +134,17 @@ export default {
           },
         cartListMobShow(){
            this.$refs['cart_list_mob'].style.display = "block"
+           let cart_add = JSON.parse(localStorage.getItem('cart')) 
+                    this.cart_product = cart_add
+                    this.cart_length = this.cart_product.length
+
+                    if( this.cart_product.length == 0 ){
+                        this.cart_empty = true
+                        this.checkout = false
+                    }else{
+                        this.cart_empty = false
+                        this.checkout = true
+                    }
         },
         cartListMobHide(){
             this.$refs['cart_list_mob'].style.display = "none"
