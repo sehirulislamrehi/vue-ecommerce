@@ -1,5 +1,46 @@
 <template>
      <div id="app">
+
+          <!-- topbar ad start -->
+          <Ad />
+          <!-- topbar ad end -->
+
+          <!-- for pc start -->
+          <div class="for-pc">
+               <!-- topbar information start -->
+               <Info />
+               <!-- topbar information start -->
+
+               <!-- search section start -->
+               <SearchPc />
+               <!-- search section end -->
+
+               <!-- nav bar start -->
+               <Nav />
+               <!-- navbar end -->
+          </div>
+          <!-- for pc end -->
+
+
+          <!-- for mob start -->
+          <div class="for-mob">
+
+               <!-- sIdeBaR start -->
+               <Sidebar /> 
+               <!-- sIdeBaR end -->
+
+               <!-- search mob start -->
+               <Search />
+               <!-- search mob end -->
+
+               <!-- cart section start -->
+               <Cart />
+               <!-- cart section end -->
+
+          </div>
+          <!-- for mob end -->
+
+          
           <section class="auth-section">
                <div class="container">
                     <div class="row">
@@ -59,7 +100,32 @@
 
 <script>
 import axios from "axios"
+
+
+import Ad from "./topbar/AdComponent";
+//for pc start
+import Info from "./topbar/pc/InfoComponent";
+import SearchPc from "./topbar/pc/SearchComponent";
+import Nav from "./topbar/pc/NavComponent"
+//for pc end
+//for mob start
+import Sidebar from "./topbar/mob/SidebarComponent";
+import Search from "./topbar/mob/SearchComponent";
+import Cart from "./topbar/mob/CartComponent"
+//for mob end
+
+
 export default {
+     components: {
+          Ad,
+          Info,
+          SearchPc,
+          Nav,
+          Sidebar,
+          Search,
+          Cart,
+     },
+
      data(){
           return{
                name: "",

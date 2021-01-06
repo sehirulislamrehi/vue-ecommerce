@@ -68,8 +68,8 @@
         </section>
 
         <!-- snackbar start -->
-        <div class="snackbar" ref="snackbar" @click="closeSnackbar">
-            
+        <div class="snackbar" ref="snackbar" v-if="snackbar == true" @click="closeSnackbar">
+            {{ text }}
         </div>
         <!-- snackbar end -->
 
@@ -88,6 +88,8 @@ export default {
             cart_length: 0,
             cart_empty: "",
             checkout: "",
+            snackbar: "",
+            text: "",
             cartsample: {
                 id: "",
                 name: "",
@@ -110,11 +112,11 @@ export default {
         }
     },
     mounted(){
-        this.$refs['snackbar'].style.display = "none"
+        this.snackbar = false
 
         this.$root.$on('addToCart', (id) => {
-                this.$refs['snackbar'].style.display = "block"
-                this.$refs['snackbar'].innerHTML = "Please wait"
+                this.snackbar = true
+                this.text = "Please wait"
 
                 if( localStorage.getItem('token') ){
                     axios.get(`http://127.0.0.1:8000/api/addtocart/${id}`)
@@ -147,8 +149,8 @@ export default {
                         let cart_add = JSON.parse(localStorage.getItem('cart'))
                         this.cart_product = cart_add
 
-                        this.$refs['snackbar'].style.display = "block"
-                        this.$refs['snackbar'].innerHTML = "Product added to the cart"
+                        this.snackbar = true
+                        this.text = "Product added to the cart"
                         this.cart_length = this.cart_product.length
 
                         if( this.cart_product.length == 0 ){
@@ -163,14 +165,14 @@ export default {
                          
                     })
                }else{
-                    this.$refs['snackbar'].style.display = "block"
-                    this.$refs['snackbar'].innerHTML = "PLease login first"
+                    this.snackbar = true
+                    this.text = "PLease login first"
                } 
         })
     },
     methods: {
         closeSnackbar(){
-               this.$refs['snackbar'].style.display = "none"
+               this.snackbar = false
           },
         cartListMobShow(){
            this.$refs['cart_list_mob'].style.display = "block"
@@ -190,8 +192,8 @@ export default {
                     let cart_add = JSON.parse(localStorage.getItem('cart'))
                     this.cart_product = cart_add
 
-                    this.$refs['snackbar'].style.display = "block"
-                    this.$refs['snackbar'].innerHTML = "Product removed from the cart"
+                    this.snackbar = true
+                    this.text = "Product removed from the cart"
                     this.cart_length = this.cart_product.length
 
                     if( this.cart_product.length == 0 ){

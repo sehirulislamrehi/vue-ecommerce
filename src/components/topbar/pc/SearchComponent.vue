@@ -56,7 +56,7 @@
                                 <div class="col-md-12" style="position: relative;">
                                     <div class="cart_block">
                                         <ul>
-                                            <li class="cart_box"  id="cart_box" @mouseover="cart_show" @mouseout="cart_hide">
+                                            <li class="cart_box" v-if="this.$route.name != 'checkout'"  id="cart_box" @mouseover="cart_show" @mouseout="cart_hide">
 
                                                 <!-- cart count start -->
                                                 <div class="cart_count">
@@ -121,8 +121,8 @@
         <!-- top logo section end -->
 
         <!-- snackbar start -->
-        <div class="snackbar" ref="snackbar" @click="closeSnackbar">
-            
+        <div class="snackbar" ref="snackbar" v-if="snackbar == true" @click="closeSnackbar">
+            {{ text }}
         </div>
         <!-- snackbar end -->
 
@@ -140,6 +140,8 @@ export default {
             cart_length: 0,
             cart_empty: "",
             checkout: "",
+            snackbar: "",
+            text: "",
             cartsample: {
                 id: "",
                 name: "",
@@ -162,36 +164,11 @@ export default {
         }
     },
     mounted(){
-        this.$refs['snackbar'].style.display = "none"
-
-        this.$root.$on('removeAllCart', (id) => {
-            let cart = JSON.parse(localStorage.getItem('cart'))
-             cart.filter( (value, index) => {
-                 if( value.id == id ){
-                     cart.splice(index,1)
-                     localStorage.setItem('cart', JSON.stringify(cart))
-
-                    let cart_add = JSON.parse(localStorage.getItem('cart'))
-                    this.cart_product = cart_add
-
-                    this.$refs['snackbar'].style.display = "block"
-                    this.$refs['snackbar'].innerHTML = "Product removed from the cart"
-                    this.cart_length = this.cart_product.length
-
-                    if( this.cart_product.length == 0 ){
-                        this.cart_empty = true
-                        this.checkout = false
-                    }else{
-                        this.cart_empty = false
-                        this.checkout = true
-                    }
-                 }
-             })
-        })
+        this.snackbar = false
 
         this.$root.$on('addToCart', (id) => {
-                this.$refs['snackbar'].style.display = "block"
-                this.$refs['snackbar'].innerHTML = "Please wait"
+                this.snackbar = true
+                this.text = "Please wait"
 
                 if( localStorage.getItem('token') ){
                     axios.get(`http://127.0.0.1:8000/api/addtocart/${id}`)
@@ -207,13 +184,12 @@ export default {
                          this.cartsample.qty = 1
                          this.cartsample.price = res.data.product.offer_price ? res.data.product.offer_price : res.data.product.regular_price
 
-                         cart.filter( (value, index) => {
-                              if( value.id == res.data.product.id ){
-                                   
-                                   cart[index].qty += 1;
-                                   exist = true
-                              }
-                         })
+                        //  cart.filter( (value, index) => {
+                        //       if( value.id == res.data.product.id ){
+                        //            cart[index].qty += 1;
+                        //            exist = true
+                        //       }
+                        //  })
                          
                          if( exist == false ){
                               cart.push(this.cartsample)
@@ -224,8 +200,8 @@ export default {
                         let cart_add = JSON.parse(localStorage.getItem('cart'))
                         this.cart_product = cart_add
 
-                        this.$refs['snackbar'].style.display = "block"
-                        this.$refs['snackbar'].innerHTML = "Product added to the cart"
+                        this.snackbar = true
+                        this.text = "Product added to the cart"
                         this.cart_length = this.cart_product.length
 
                         if( this.cart_product.length == 0 ){
@@ -240,15 +216,15 @@ export default {
                          
                     })
                }else{
-                    this.$refs['snackbar'].style.display = "block"
-                    this.$refs['snackbar'].innerHTML = "PLease login first"
+                    this.snackbar = true
+                    this.text = "PLease login first"
                } 
         })
     },
      methods: {
         
          closeSnackbar(){
-               this.$refs['snackbar'].style.display = "none"
+               this.snackbar = false
           },
          cart_show(){
             this.$refs['cart_list'].style.display = "block"
@@ -257,8 +233,7 @@ export default {
             this.$refs['cart_list'].style.display = "none"
          },
          removeCart(id){
-            
-
+        
              let cart = JSON.parse(localStorage.getItem('cart'))
              cart.filter( (value, index) => {
                  if( value.id == id ){
@@ -268,8 +243,8 @@ export default {
                     let cart_add = JSON.parse(localStorage.getItem('cart'))
                     this.cart_product = cart_add
 
-                    this.$refs['snackbar'].style.display = "block"
-                    this.$refs['snackbar'].innerHTML = "Product removed from the cart"
+                    this.snackbar = true
+                    this.text = "Product removed from the cart"
                     this.cart_length = this.cart_product.length
 
                     if( this.cart_product.length == 0 ){
