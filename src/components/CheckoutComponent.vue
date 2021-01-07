@@ -136,6 +136,7 @@ export default {
                total: 0,
                delivery_charge: 50,
                cart_product: [],
+               text: "",
                cartsample: {
                     id: "",
                     name: "",

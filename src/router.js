@@ -9,6 +9,7 @@ import Shop from "./components/ShopComponent"
 import Profile from "./components/ProfileComponent"
 import Checkout from "./components/CheckoutComponent"
 import Category from "./components/CategoryComponent"
+import InvoiceDetail from "./components/InvoiceDetailComponent"
 
 Vue.use(VueRouter)
 
@@ -56,7 +57,21 @@ const routes = [
                else{
                     next("/login");
                }
-          }
+          },
+          
+     },
+     {
+          path: "/invoice-detail/:id",
+          name: "invoice-detail",
+          component: InvoiceDetail,
+          beforeEnter: (to, from, next) => {
+               if( localStorage.getItem("token") ){
+                    next();
+               }
+               else{
+                    next("/login");
+               }
+          },
      },
      {
           path: "/checkout",

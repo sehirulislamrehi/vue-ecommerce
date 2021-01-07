@@ -151,6 +151,7 @@ export default {
             },
         }
     },
+    
     created(){
 
         let cart_add = JSON.parse(localStorage.getItem('cart')) || 0
@@ -166,64 +167,63 @@ export default {
         }
 
         this.$root.$on('addToCart', (id) => {
-            
-                this.snackbar = true
-                this.text = "Please wait"
+        
+            this.snackbar = true
+            this.text = "Please wait"
 
-                if( localStorage.getItem('token') ){
-                    axios.get(`http://127.0.0.1:8000/api/addtocart/${id}`)
-                    .then( res  => {
+            if( localStorage.getItem('token') ){
+                axios.get(`http://127.0.0.1:8000/api/addtocart/${id}`)
+                .then( res  => {
 
-                         let cart = JSON.parse(localStorage.getItem('cart')) || [];
+                        let cart = JSON.parse(localStorage.getItem('cart')) || [];
 
-                         let exist = false
+                        let exist = false
 
-                         this.cartsample.id = res.data.product.id
-                         this.cartsample.name = res.data.product.name
-                         this.cartsample.image = res.data.product.image
-                         this.cartsample.qty = 1
-                         this.cartsample.price = res.data.product.offer_price ? res.data.product.offer_price : res.data.product.regular_price
+                        this.cartsample.id = res.data.product.id
+                        this.cartsample.name = res.data.product.name
+                        this.cartsample.image = res.data.product.image
+                        this.cartsample.qty = 1
+                        this.cartsample.price = res.data.product.offer_price ? res.data.product.offer_price : res.data.product.regular_price
 
-                         cart.filter( (value, index) => {
-                              if( value.id == res.data.product.id ){
-                                   cart[index].qty += 1;
-                                   exist = true
-                              }
-                         })
-                         
-                         if( exist == false ){
-                              cart.push(this.cartsample)
-                         }
-
-                        localStorage.setItem('cart', JSON.stringify(cart))
-
-                        let cart_add = JSON.parse(localStorage.getItem('cart'))
-                        this.cart_product = cart_add
-
-                        this.snackbar = true
-                        this.text = "Product added to the cart"
-                        this.cart_length = this.cart_product.length
-
-                        if( this.cart_product.length == 0 ){
-                            this.cart_empty = true
-                            this.checkout = false
-                        }else{
-                            this.cart_empty = false
-                            this.checkout = true
-                        }
+                        cart.filter( (value, index) => {
+                            if( value.id == res.data.product.id ){
+                                cart[index].qty += 1;
+                                exist = true
+                            }
+                        })
                         
-                    })
-               }else{
+                        if( exist == false ){
+                            cart.push(this.cartsample)
+                        }
+
+                    localStorage.setItem('cart', JSON.stringify(cart))
+
+                    let cart_add = JSON.parse(localStorage.getItem('cart'))
+                    this.cart_product = cart_add
+
                     this.snackbar = true
-                    this.text = "PLease login first"
-               } 
+                    this.text = "Product added to the cart"
+                    this.cart_length = this.cart_product.length
+
+                    if( this.cart_product.length == 0 ){
+                        this.cart_empty = true
+                        this.checkout = false
+                    }else{
+                        this.cart_empty = false
+                        this.checkout = true
+                    }
+                    
+                })
+            }else{
+                this.snackbar = true
+                this.text = "PLease login first"
+            } 
         })
+        
+        
     },
     mounted(){
         this.snackbar = false
-
-        
-    
     },
      methods: {
         

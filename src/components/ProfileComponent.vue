@@ -64,24 +64,44 @@
                                    <thead>
                                    <tr>
                                         <th scope="col">#Invoice No</th>
-                                        <th scope="col">Image</th>
-                                        <th scope="col">Name</th>
                                         <th scope="col">Status</th>
+                                        <th scope="col">Paid By</th>
+                                        <th scope="col">Is payment done?</th>
+                                        <th scope="col">Total</th>
                                         <th scope="col">Date</th>
+                                        <th scope="col">Action</th>
                                    </tr>
                                    </thead>
                                    <tbody>
-                                   <tr>
-                                        <th scope="row">1</th>
+                                   <tr v-for="item in invoice" :key="item.id">
+                                        <th scope="row">#{{ item.id }}</th>
+                                        <td>{{ item.status }}</td>
                                         <td>
-                                             <img src="images/product-1.jpg" width="32px" alt="">
+                                             {{ item.paid_by }}
                                         </td>
-                                        <td>6 Blade USB Rechargeable Portable Mini Juicer-Blue</td>
-                                        <td>
-                                             <p class="badge badge-success">Delivered</p>
+                                        <td v-if="item.is_payment_done == 0">
+                                             No
+                                        </td>
+                                        <td v-if="item.is_payment_done == 1">
+                                             Yes
                                         </td>
                                         <td>
-                                             12/01/2021
+                                             {{ item.total }}
+                                        </td>
+                                        <td>
+                                             {{ item.created_at }}
+                                        </td>
+                                        <td>
+                                             <router-link :to='{
+                                                  path: "/invoice-detail/:id",
+                                                  name: "invoice-detail",
+                                                  params: {
+                                                       id: item.id
+                                                  }
+                                             }'>
+                                                  <button>View</button>
+                                             </router-link>
+                                             <button @click="deleteInvoice(item.id)">Delete Invoice</button>
                                         </td>
                                    </tr>
                                    </tbody>
@@ -131,13 +151,14 @@ export default {
           return{
                snackbar: "",
                text: "",
+               invoice: [],
           }
      }, 
      created(){
           let token = localStorage.getItem('token')
           axios.get(`http://127.0.0.1:8000/api/profile/order/${token}`,)
           .then( res => {
-               console.log(res)
+               this.invoice = res.data.invoice
           })
           .catch( err => {
                console.log(err.response)
@@ -146,7 +167,7 @@ export default {
      mounted(){
         this.snackbar = false
         if( localStorage.getItem('orderSuccess') ){
-               console.log('a')
+               
                this.snackbar = true
                this.text = "Order placed successfully"
           }
@@ -163,6 +184,26 @@ export default {
                this.$router
                .push("/login")
                .then()
+          },
+          deleteInvoice(id){
+               this.snackbar = false
+               this.text = "Please wait"
+               axios.get(`http://127.0.0.1:8000/api/invoice/delete/${id}`)
+               .then((res) => {
+                    this.invoice.filter((value, index) => {
+                         if( res.data.invoice ){
+                              if( value.id == id ){
+                                   this.invoice.splice(index, 1)
+                                   this.snackbar = false
+                                   this.text = "Invoice removed successfully"
+                              }
+                         }
+                    })
+               })
+               .catch( () => {
+                    this.snackbar = false
+                    this.text = "Something went wrong"
+               })
           }
      }
 }
