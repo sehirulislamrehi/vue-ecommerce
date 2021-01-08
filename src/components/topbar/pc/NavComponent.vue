@@ -40,7 +40,7 @@ export default {
      },
      methods: {
           initialize(){
-               axios.get("http://127.0.0.1:8000/api/category/",{})
+               axios.get("https://vuebackend.sehirulislamrehi.com/api/category",{})
                .then( res => {
                     this.category = res.data.category.data
                })

@@ -156,7 +156,7 @@ export default {
      }, 
      created(){
           let token = localStorage.getItem('token')
-          axios.get(`http://127.0.0.1:8000/api/profile/order/${token}`,)
+          axios.get(`https://vuebackend.sehirulislamrehi.com/api/profile/order/${token}`,)
           .then( res => {
                this.invoice = res.data.invoice
           })
@@ -188,7 +188,7 @@ export default {
           deleteInvoice(id){
                this.snackbar = false
                this.text = "Please wait"
-               axios.get(`http://127.0.0.1:8000/api/invoice/delete/${id}`)
+               axios.get(`https://vuebackend.sehirulislamrehi.com/api/invoice/delete/${id}`)
                .then((res) => {
                     this.invoice.filter((value, index) => {
                          if( res.data.invoice ){

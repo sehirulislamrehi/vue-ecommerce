@@ -118,7 +118,7 @@ export default {
      },
      methods: {
           initialize(){
-               axios.get("http://127.0.0.1:8000/api/product",{})
+               axios.get("https://vuebackend.sehirulislamrehi.com/api/product",{})
                .then( res => {
                     this.product = res.data.product.data
                })

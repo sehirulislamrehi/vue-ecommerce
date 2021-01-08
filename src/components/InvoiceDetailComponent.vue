@@ -121,7 +121,7 @@ export default {
      },
      created(){
           let id = this.$route.params.id
-          axios.get(`http://127.0.0.1:8000/api/profile/invoice/${id}`)
+          axios.get(`https://vuebackend.sehirulislamrehi.com/api/profile/invoice/${id}`)
           .then( res => {
                this.product = res.data.product
                this.order = res.data.order

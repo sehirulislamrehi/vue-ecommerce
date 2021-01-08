@@ -30,7 +30,7 @@
                                     <table class="table table-striped">
                                         <thead>
                                         </thead><tbody>
-                                            <tr v-for="item in cart_product" :key="item.id">
+                                            <tr v-for="(item, index) in cart_product" :key="index">
                                                 <td>
                                                     <img :src="item.image" width="50px" alt="">
                                                 </td>

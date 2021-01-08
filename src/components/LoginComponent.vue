@@ -134,7 +134,7 @@ export default {
                let form = new FormData()
                form.append('email', this.email)
                form.append('password', this.password)
-               axios.post("http://127.0.0.1:8000/api/visitor/signin", form)
+               axios.post("https://vuebackend.sehirulislamrehi.com/api/visitor/signin", form)
                .then( res =>  {
                     if( res.data.invalid ){
                          this.$refs['snackbar'].style.display = "block"

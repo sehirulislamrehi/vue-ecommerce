@@ -46,7 +46,7 @@
                                 <div class="form-group cat_block">
                                     <select name="" class="form-control" required="">
                                         <option>All Categories</option>
-                                        <option v-for="item in category" :key="item.id">{{ item.name }}</option>
+                                        <option v-for="(item, index) in category" :key="index">{{ item.name }}</option>
                                     </select>
                                 </div>
                                 <div class="form-group search_block">
@@ -77,7 +77,7 @@ export default {
      },
     methods: {
         initialize(){
-               axios.get("http://127.0.0.1:8000/api/category/",{})
+               axios.get("https://vuebackend.sehirulislamrehi.com/api/category",{})
                .then( res => {
                     this.category = res.data.category.data
                })

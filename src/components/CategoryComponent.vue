@@ -127,7 +127,7 @@ export default {
      methods:{
           initialize(){
                let category_slug = this.$route.params.name
-               axios.get(`http://127.0.0.1:8000/api/category/${category_slug}`,{})
+               axios.get(`https://vuebackend.sehirulislamrehi.com/api/category/${category_slug}`,{})
                .then( res => {
                     this.category_name = res.data.category
                     this.product = res.data.product.data

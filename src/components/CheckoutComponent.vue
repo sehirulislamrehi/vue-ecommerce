@@ -164,30 +164,6 @@ export default {
                     this.total += cart[x].price * cart[x].qty
                }
           }, 
-          plus(id){
-               let cart = JSON.parse(localStorage.getItem('cart'))
-               let exist = false
-               cart.filter( (value, index) => {
-                    if( value.id == id && exist == false){
-                         this.cartsample.id = id
-                         this.cartsample.name = value.name
-                         this.cartsample.image = value.image
-                         this.cartsample.qty = value.qty += 1
-                         this.cartsample.price = value.price 
-                         cart.splice(index,1,this.cartsample)
-                         localStorage.setItem('cart', JSON.stringify(cart))
-
-                         let updated_cart = JSON.parse(localStorage.getItem('cart'))
-                         this.cart_product = updated_cart
-                         this.total+=value.price 
-
-                         this.$refs['snackbar'].style.display = "block"
-                         this.$refs['snackbar'].innerHTML = "Cart Updated"
-                         exist = true
-
-                    }
-               })
-          },
           minus(id){
                let cart = JSON.parse(localStorage.getItem('cart'))
                let exist = false
@@ -204,7 +180,35 @@ export default {
                          let updated_cart = JSON.parse(localStorage.getItem('cart'))
                          this.cart_product = updated_cart
                          this.total-=value.price
+                         console.log(this.total)
+                         console.log(value.price)
 
+                         this.$refs['snackbar'].style.display = "block"
+                         this.$refs['snackbar'].innerHTML = "Cart Updated"
+                         exist = true
+
+                    }
+               })
+          },
+          plus(id){
+               let cart = JSON.parse(localStorage.getItem('cart'))
+               let exist = false
+               cart.filter( (value, index) => {
+                    if( value.id == id && exist == false ){
+                         this.cartsample.id = id
+                         this.cartsample.name = value.name
+                         this.cartsample.image = value.image
+                         this.cartsample.qty = value.qty += 1
+                         this.cartsample.price = value.price 
+                         cart.splice(index,1,this.cartsample)
+                         localStorage.setItem('cart', JSON.stringify(cart))
+
+                         let updated_cart = JSON.parse(localStorage.getItem('cart'))
+                         this.cart_product = updated_cart
+                         
+                         this.total+= parseInt(value.price)
+                         
+     
                          this.$refs['snackbar'].style.display = "block"
                          this.$refs['snackbar'].innerHTML = "Cart Updated"
                          exist = true
@@ -258,7 +262,7 @@ export default {
                          })
                          
                          form.append("token",localStorage.getItem('token'))
-                         axios.post("http://127.0.0.1:8000/api/placeorder",form)
+                         axios.post("https://vuebackend.sehirulislamrehi.com/api/placeorder",form)
                          .then( res => {
                               if( res.data.success ){
                                    localStorage.removeItem('cart')

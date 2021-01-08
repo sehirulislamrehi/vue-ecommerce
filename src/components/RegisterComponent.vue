@@ -151,7 +151,7 @@ export default {
                form.append("email", this.email)
                form.append("password", this.password)
                form.append("password_confirmation", this.password_confirmation)
-               axios.post("http://127.0.0.1:8000/api/visitor/registration",form)
+               axios.post("https://vuebackend.sehirulislamrehi.com/api/visitor/registration",form)
                .then(res => {
                     if( res.data.visitor ){
                          this.$refs['snackbar'].style.display = "block"

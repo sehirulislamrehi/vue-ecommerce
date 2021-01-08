@@ -123,7 +123,7 @@ export default {
      methods: {
           initialize(){
                let product_slug = this.$route.params.slug
-               axios.get(`http://127.0.0.1:8000/api/product/${product_slug}`,{})
+               axios.get(`https://vuebackend.sehirulislamrehi.com/api/product/${product_slug}`,{})
                .then( res => {
                     this.product_detail = res.data.product
                })
